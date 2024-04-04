@@ -1,0 +1,28 @@
+{
+  "schema": {
+    "types": [
+      {
+        "name": "Root",
+        "actions": [
+          {
+            "name": "run",
+            "type": "Void"
+          },
+          {
+            "name": "ping",
+            "type": "Void"
+          },
+          {
+            "name": "getGitHubProfile",
+            "type": "Void"
+          }
+        ]
+      }
+    ]
+  },
+  "dependencies": {
+    "email": "email:",
+    "sms": "sms:",
+    "github": "github:"
+  }
+}

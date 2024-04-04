@@ -1,0 +1,4915 @@
+{
+  "types": {
+    "email": {
+      "gref_hash": "5d0928717cd7e1bb0a8efb057401a2179e994e26757307d8994ef85d12bc3e53",
+      "type": "email:Root"
+    },
+    "github": {
+      "gref_hash": "e6e65bff3bc6bf18cb624db3dc3875132855784b407ad6877c3f2b19e56a428a",
+      "type": "github:Root"
+    },
+    "sms": {
+      "gref_hash": "9f3731cc47302939f352abadad67485a33ed9eb069680d1c83dfcd21f1656c5e",
+      "type": "sms:Root"
+    }
+  },
+  "imports": [
+    {
+      "name": "email",
+      "schema": {
+        "types": [
+          {
+            "name": "Root",
+            "description": "Send yourself emails",
+            "actions": [
+              {
+                "name": "send",
+                "description": "Sends an email to the configured address",
+                "type": "Void",
+                "params": [
+                  {
+                    "name": "subject",
+                    "description": "",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "body",
+                    "description": "",
+                    "type": "String",
+                    "optional": false
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "endpoint",
+                "description": "Invoked when an HTTP request is received for this program",
+                "type": "String",
+                "params": [
+                  {
+                    "name": "method",
+                    "description": "HTTP method",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "path",
+                    "description": "HTTP path",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "body",
+                    "description": "HTTP body, if any",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "query",
+                    "description": "HTTP query string, encoded as JSON",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "headers",
+                    "description": "HTTP headers, encoded as JSON",
+                    "type": "String",
+                    "optional": false
+                  }
+                ],
+                "hints": {
+                  "hidden": true
+                }
+              },
+              {
+                "name": "email",
+                "description": "Invoked when a new email arrives for this program",
+                "type": "String",
+                "params": [
+                  {
+                    "name": "replyTo",
+                    "description": "Reply to",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "text",
+                    "description": "Email body as text",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "from",
+                    "description": "Email sender",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "to",
+                    "description": "To",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "cc",
+                    "description": "CC",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "subject",
+                    "description": "Email subject",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "html",
+                    "description": "Email body as HTML",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "id",
+                    "description": "Email ID",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "inReplyTo",
+                    "description": "ID of email this is a reply to, if any",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "replyText",
+                    "description": "Reply text",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "attachments",
+                    "description": "An array of attachment names and download URLs",
+                    "type": "Json",
+                    "optional": true
+                  }
+                ],
+                "hints": {
+                  "hidden": true
+                }
+              }
+            ],
+            "fields": [
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "Root",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          }
+        ],
+        "imports": [
+          {
+            "name": "sys-email",
+            "schema": {
+              "types": [
+                {
+                  "name": "Root",
+                  "description": "",
+                  "actions": [
+                    {
+                      "name": "send",
+                      "description": "",
+                      "type": "Void",
+                      "params": [
+                        {
+                          "name": "subject",
+                          "description": "",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "body",
+                          "description": "",
+                          "type": "String",
+                          "optional": false
+                        }
+                      ],
+                      "hints": {}
+                    }
+                  ],
+                  "fields": [],
+                  "events": []
+                }
+              ],
+              "imports": []
+            },
+            "source": {
+              "Program": "tbd"
+            }
+          },
+          {
+            "name": "sys-clock",
+            "schema": {
+              "types": [
+                {
+                  "name": "Root",
+                  "description": "",
+                  "actions": [
+                    {
+                      "name": "sleep",
+                      "description": "",
+                      "type": "Void",
+                      "params": [
+                        {
+                          "name": "key",
+                          "description": "",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "seconds",
+                          "description": "",
+                          "type": "Float",
+                          "optional": false
+                        }
+                      ],
+                      "hints": {}
+                    }
+                  ],
+                  "fields": [],
+                  "events": [
+                    {
+                      "name": "timer",
+                      "description": "",
+                      "type": "TimerEvent",
+                      "params": [
+                        {
+                          "name": "key",
+                          "description": "",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "spec",
+                          "description": "",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "maxCount",
+                          "description": "",
+                          "type": "Int",
+                          "optional": false
+                        }
+                      ],
+                      "hints": {}
+                    },
+                    {
+                      "name": "timerAt",
+                      "description": "",
+                      "type": "TimerEvent",
+                      "params": [
+                        {
+                          "name": "key",
+                          "description": "",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "seconds",
+                          "description": "",
+                          "type": "String",
+                          "optional": false
+                        }
+                      ],
+                      "hints": {}
+                    }
+                  ]
+                },
+                {
+                  "name": "TimerEvent",
+                  "description": "",
+                  "actions": [],
+                  "fields": [
+                    {
+                      "name": "id",
+                      "description": "",
+                      "type": "String",
+                      "params": [],
+                      "hints": {}
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "imports": []
+            },
+            "source": {
+              "Program": ""
+            }
+          },
+          {
+            "name": "sys-process",
+            "schema": {
+              "types": [
+                {
+                  "name": "Root",
+                  "description": "",
+                  "actions": [],
+                  "fields": [
+                    {
+                      "name": "endpointUrl",
+                      "description": "Gets the program's own endpoint URL",
+                      "type": "String",
+                      "params": [],
+                      "hints": {}
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "imports": []
+            },
+            "source": {
+              "Program": ""
+            }
+          }
+        ]
+      },
+      "source": {
+        "Program": "tbd"
+      }
+    },
+    {
+      "name": "github",
+      "schema": {
+        "types": [
+          {
+            "name": "Root",
+            "description": "Driver for the Github API",
+            "actions": [
+              {
+                "name": "configure",
+                "description": "Invoke with a valid Github access token to configure this driver",
+                "type": "Void",
+                "params": [
+                  {
+                    "name": "token",
+                    "description": "",
+                    "type": "String",
+                    "optional": false
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "endpoint",
+                "description": "Invoke an HTTP endpoint with the specified method, body, path, query, and headers",
+                "type": "String",
+                "params": [
+                  {
+                    "name": "method",
+                    "description": "",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "body",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "path",
+                    "description": "",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "query",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "headers",
+                    "description": "",
+                    "type": "String",
+                    "optional": false
+                  }
+                ],
+                "hints": {
+                  "hidden": true
+                }
+              },
+              {
+                "name": "email",
+                "description": "Invoked when a new email arrives for this program",
+                "type": "String",
+                "params": [
+                  {
+                    "name": "replyTo",
+                    "description": "Reply to",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "text",
+                    "description": "Email body as text",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "from",
+                    "description": "Email sender",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "to",
+                    "description": "To",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "cc",
+                    "description": "CC",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "subject",
+                    "description": "Email subject",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "html",
+                    "description": "Email body as HTML",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "id",
+                    "description": "Email ID",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "inReplyTo",
+                    "description": "ID of email this is a reply to, if any",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "replyText",
+                    "description": "Reply text",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "attachments",
+                    "description": "An array of attachment names and download URLs",
+                    "type": "Json",
+                    "optional": true
+                  }
+                ],
+                "hints": {
+                  "hidden": true
+                }
+              }
+            ],
+            "fields": [
+              {
+                "name": "users",
+                "description": "Collection of Github users",
+                "type": "UserCollection",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "status",
+                "description": "String",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "parse",
+                "description": "List of repositories with name and value filters",
+                "type": "List",
+                "ofType": {
+                  "type": "Ref",
+                  "ofType": "Repository"
+                },
+                "params": [
+                  {
+                    "name": "name",
+                    "description": "",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "value",
+                    "description": "",
+                    "type": "String",
+                    "optional": false
+                  }
+                ],
+                "hints": {
+                  "hidden": false
+                }
+              },
+              {
+                "name": "search",
+                "description": "Global search functionality",
+                "type": "GlobalSearch",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "tests",
+                "description": "Tests",
+                "type": "Tests",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "Root",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": [
+              {
+                "name": "statusChanged",
+                "description": "Triggered when the status of the Github API driver changes",
+                "type": "Void",
+                "params": [],
+                "hints": {}
+              }
+            ]
+          },
+          {
+            "name": "UserCollection",
+            "description": "Collection of Github users",
+            "actions": [],
+            "fields": [
+              {
+                "name": "one",
+                "description": "Field representing a single Github user",
+                "type": "User",
+                "params": [
+                  {
+                    "name": "name",
+                    "description": "",
+                    "type": "String",
+                    "optional": false
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "page",
+                "description": "Field representing a page of Github users",
+                "type": "UserPage",
+                "params": [
+                  {
+                    "name": "since",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "UserCollection",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "UserPage",
+            "description": "Collection of Github user items with pagination support",
+            "actions": [],
+            "fields": [
+              {
+                "name": "items",
+                "description": "List of Github user items",
+                "type": "List",
+                "ofType": "User",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "next",
+                "description": "Reference to the next page of Github user items",
+                "type": "Ref",
+                "ofType": "UserPage",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "UserPage",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "User",
+            "description": "Collection of Github users",
+            "actions": [],
+            "fields": [
+              {
+                "name": "login",
+                "description": "The user's login name",
+                "type": "String",
+                "params": [],
+                "hints": {
+                  "primary": true
+                }
+              },
+              {
+                "name": "name",
+                "description": "The user's name",
+                "type": "String",
+                "params": [],
+                "hints": {
+                  "secondary": true
+                }
+              },
+              {
+                "name": "bio",
+                "description": "The user's bio",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "blog",
+                "description": "The user's blog",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "company",
+                "description": "The user's company",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "repos",
+                "description": "Collection of Github repositories owned by the user",
+                "type": "RepositoryCollection",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "email",
+                "description": "The user's email address",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "id",
+                "description": "The user's ID",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "followers",
+                "description": "The number of followers the user has",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "following",
+                "description": "The number of users the user is following",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "location",
+                "description": "The user's location",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "type",
+                "description": "The type of user",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "avatar_url",
+                "description": "The URL of the user's avatar",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "created_at",
+                "description": "The date the user account was created",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gravatar_id",
+                "description": "The user's gravatar ID",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "public_gists",
+                "description": "The number of public gists the user has",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "public_repos",
+                "description": "The number of public repositories the user has",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "site_admin",
+                "description": "Indicates if the user is a site admin",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "hireable",
+                "description": "Indicates if the user is available for hire",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "updated_at",
+                "description": "The date the user account was last updated",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "User",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "RepositoryCollection",
+            "description": "Collection of Github repositories",
+            "actions": [],
+            "fields": [
+              {
+                "name": "one",
+                "description": "Retrieve a single repository by name",
+                "type": "Repository",
+                "params": [
+                  {
+                    "name": "name",
+                    "description": "",
+                    "type": "String",
+                    "optional": false
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "page",
+                "description": "Retrieve a page of repositories with optional filtering and pagination",
+                "type": "RepositoryPage",
+                "params": [
+                  {
+                    "name": "type",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "sort",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "direction",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "page",
+                    "description": "",
+                    "type": "Int",
+                    "optional": true
+                  },
+                  {
+                    "name": "pageSize",
+                    "description": "",
+                    "type": "Int",
+                    "optional": true
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "search",
+                "description": "Search for repositories with optional filtering and pagination",
+                "type": "RepositoryPage",
+                "params": [
+                  {
+                    "name": "q",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "sort",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "order",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "page",
+                    "description": "",
+                    "type": "Int",
+                    "optional": true
+                  },
+                  {
+                    "name": "pageSize",
+                    "description": "",
+                    "type": "Int",
+                    "optional": true
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "RepositoryCollection",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "RepositoryPage",
+            "description": "Type representing a page of repositories",
+            "actions": [],
+            "fields": [
+              {
+                "name": "items",
+                "description": "List of repositories in the page",
+                "type": "List",
+                "ofType": "Repository",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "next",
+                "description": "Reference to the next page of repositories",
+                "type": "Ref",
+                "ofType": "RepositoryPage",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "RepositoryPage",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "Repository",
+            "description": "Collection of Github repositories",
+            "actions": [
+              {
+                "name": "transfer",
+                "description": "Transfers the ownership of the repository to a new owner with a new name",
+                "type": "Void",
+                "params": [
+                  {
+                    "name": "new_owner",
+                    "description": "",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "new_name",
+                    "description": "",
+                    "type": "String",
+                    "optional": false
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "addCollaborator",
+                "description": "Adds a collaborator to the repository with the specified permission level",
+                "type": "Void",
+                "params": [
+                  {
+                    "name": "username",
+                    "description": "",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "permission",
+                    "description": "The permission level to grant the collaborator. One of: pull, triage, push, maintain, admin. Default: push",
+                    "type": "String",
+                    "optional": false
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "createTree",
+                "description": "Creates a new tree within the repository based on the provided parameters",
+                "type": "String",
+                "params": [
+                  {
+                    "name": "base",
+                    "description": "The base tree SHA",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "path",
+                    "description": "The file path of the new tree object",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "tree",
+                    "description": "The SHA of the tree to modify",
+                    "type": "String",
+                    "optional": false
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "createFileTree",
+                "description": "Creates a new file tree within the repository based on the provided parameters",
+                "type": "String",
+                "params": [
+                  {
+                    "name": "base",
+                    "description": "",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "path",
+                    "description": "",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "content",
+                    "description": "",
+                    "type": "String",
+                    "optional": false
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "createAutolink",
+                "description": "",
+                "type": "Void",
+                "params": [
+                  {
+                    "name": "keyPrefix",
+                    "description": "The prefix to match issue text against like `T-`",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "urlTemplate",
+                    "description": "The URL template to use for autolinking issues. Should include `<num>`",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "alphanumeric",
+                    "description": "`true` if link can contain letters, `false` if numbers only",
+                    "type": "Boolean",
+                    "optional": true
+                  }
+                ],
+                "hints": {}
+              }
+            ],
+            "fields": [
+              {
+                "name": "name",
+                "description": "The name of the repository",
+                "type": "String",
+                "params": [],
+                "hints": {
+                  "primary": true
+                }
+              },
+              {
+                "name": "description",
+                "description": "The description of the repository",
+                "type": "String",
+                "params": [],
+                "hints": {
+                  "secondary": true
+                }
+              },
+              {
+                "name": "content",
+                "description": "Collection of content within the repository",
+                "type": "ContentCollection",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "archived",
+                "description": "Indicates if the repository is archived",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "branches",
+                "description": "Collection of branches in the repository",
+                "type": "BranchCollection",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "fork",
+                "description": "Indicates if the repository is a fork",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "homepage",
+                "description": "The URL of the repository's homepage",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "id",
+                "description": "The unique identifier of the repository",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "language",
+                "description": "The primary programming language of the repository",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "private",
+                "description": "Indicates if the repository is private",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "size",
+                "description": "The size of the repository in kilobytes",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "url",
+                "description": "The URL of the repository",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "allow_merge_commit",
+                "description": "Indicates if merge commit is allowed",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "allow_rebase_merge",
+                "description": "Indicates if rebase merge is allowed",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "allow_squash_merge",
+                "description": "Indicates if squash merge is allowed",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "created_at",
+                "description": "The creation date of the repository",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "default_branch",
+                "description": "The default branch of the repository",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "forks_count",
+                "description": "The number of forks of the repository",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "full_name",
+                "description": "The full name of the repository",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "has_downloads",
+                "description": "Indicates if the repository has downloads",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "has_issues",
+                "description": "Indicates if the repository has issues",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "has_pages",
+                "description": "Indicates if the repository has pages",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "has_wiki",
+                "description": "Indicates if the repository has a wiki",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "html_url",
+                "description": "The HTML URL of the repository",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "issues",
+                "description": "Collection of issues in the repository",
+                "type": "IssueCollection",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "network_count",
+                "description": "The count of collaborators on the repository",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "open_issues_count",
+                "description": "The count of open issues in the repository",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "pushed_at",
+                "description": "The date of the latest push to the repository",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "stargazers_count",
+                "description": "The count of stargazers on the repository",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "subscribers_count",
+                "description": "The count of subscribers to the repository",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "updated_at",
+                "description": "The date of the latest update to the repository",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "watchers_count",
+                "description": "The count of watchers on the repository",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "pull_requests",
+                "description": "Collection of pull requests in the repository",
+                "type": "PullRequestCollection",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "releases",
+                "description": "Collection of releases in the repository",
+                "type": "ReleaseCollection",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "license",
+                "description": "The license of the repository",
+                "type": "License",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "commits",
+                "description": "Collection of commits in the repository",
+                "type": "CommitCollection",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "Repository",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": [
+              {
+                "name": "commentCreated",
+                "description": "Event indicating creation of a comment within the repository",
+                "type": "CommentEvent",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "issueOpened",
+                "description": "Event indicating the opening of an issue within the repository",
+                "type": "IssueEvent",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "pullRequestOpened",
+                "description": "Event indicating the opening of a pull request within the repository",
+                "type": "PullRequestEvent",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "releasePublished",
+                "description": "Event indicating the publication of a release within the repository",
+                "type": "ReleaseEvent",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "pushed",
+                "description": "Event indicating a push to the repository",
+                "type": "PushEvent",
+                "params": [],
+                "hints": {}
+              }
+            ]
+          },
+          {
+            "name": "BranchCollection",
+            "description": "Collection of branches in a GitHub repository",
+            "actions": [],
+            "fields": [
+              {
+                "name": "one",
+                "description": "Retrieve a single branch from the collection",
+                "type": "Branch",
+                "params": [
+                  {
+                    "name": "name",
+                    "description": "The name of the branch to retrieve",
+                    "type": "String",
+                    "optional": false
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "page",
+                "description": "Retrieve a page of branches from the collection",
+                "type": "BranchPage",
+                "params": [
+                  {
+                    "name": "page",
+                    "description": "The page number of branches to retrieve",
+                    "type": "Int",
+                    "optional": true
+                  },
+                  {
+                    "name": "pageSize",
+                    "description": "The number of branches per page to retrieve",
+                    "type": "Int",
+                    "optional": true
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "BranchCollection",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "BranchPage",
+            "description": "Collection of branches with pagination support",
+            "actions": [],
+            "fields": [
+              {
+                "name": "items",
+                "description": "List of branches",
+                "type": "List",
+                "ofType": "Branch",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "next",
+                "description": "Reference to the next page of branches",
+                "type": "Ref",
+                "ofType": "BranchPage",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "BranchPage",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "Branch",
+            "description": "Type representing a branch",
+            "actions": [
+              {
+                "name": "update",
+                "description": "Updates the branch with the specified SHA and reference",
+                "type": "Void",
+                "params": [
+                  {
+                    "name": "sha",
+                    "description": "The SHA of the commit to update the branch with",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "ref",
+                    "description": "The reference for the branch update",
+                    "type": "String",
+                    "optional": false
+                  }
+                ],
+                "hints": {}
+              }
+            ],
+            "fields": [
+              {
+                "name": "name",
+                "description": "The name of the branch",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "commit",
+                "description": "The commit associated with the branch",
+                "type": "Commit",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "protected",
+                "description": "Indicates whether the branch is protected",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "Branch",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "CommitCollection",
+            "description": "Collection of Github commits",
+            "actions": [
+              {
+                "name": "create",
+                "description": "Creates a new commit with the specified message, tree, and parents",
+                "type": "String",
+                "params": [
+                  {
+                    "name": "message",
+                    "description": "",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "tree",
+                    "description": "",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "parents",
+                    "description": "",
+                    "type": "String",
+                    "optional": false
+                  }
+                ],
+                "hints": {}
+              }
+            ],
+            "fields": [
+              {
+                "name": "one",
+                "description": "Represents a single commit with the specified reference",
+                "type": "Commit",
+                "params": [
+                  {
+                    "name": "ref",
+                    "description": "",
+                    "type": "String",
+                    "optional": false
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "page",
+                "description": "Represents a page of commits with optional page number and page size",
+                "type": "CommitPage",
+                "params": [
+                  {
+                    "name": "page",
+                    "description": "",
+                    "type": "Int",
+                    "optional": true
+                  },
+                  {
+                    "name": "pageSize",
+                    "description": "",
+                    "type": "Int",
+                    "optional": true
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "CommitCollection",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "CommitPage",
+            "description": "Type representing a page of commit items.",
+            "actions": [],
+            "fields": [
+              {
+                "name": "items",
+                "description": "List of commit items.",
+                "type": "List",
+                "ofType": "Commit",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "next",
+                "description": "Reference to the next commit page.",
+                "type": "Ref",
+                "ofType": "CommitPage",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "CommitPage",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "Commit",
+            "description": "Type representing a commit in a GitHub repository",
+            "actions": [],
+            "fields": [
+              {
+                "name": "sha",
+                "description": "The SHA of the commit",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "message",
+                "description": "The commit message",
+                "type": "String",
+                "params": [],
+                "hints": {
+                  "primary": true
+                }
+              },
+              {
+                "name": "author",
+                "description": "The author of the commit",
+                "type": "User",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "html_url",
+                "description": "The HTML URL of the commit",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "date",
+                "description": "The date of the commit",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "Commit",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "CommentCollection",
+            "description": "Collection of comments from the Github repository",
+            "actions": [],
+            "fields": [
+              {
+                "name": "one",
+                "description": "Retrieve a single comment from the Github repository",
+                "type": "Comment",
+                "params": [
+                  {
+                    "name": "id",
+                    "description": "",
+                    "type": "Int",
+                    "optional": false
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "page",
+                "description": "Retrieve a page of comments from the Github repository",
+                "type": "CommentPage",
+                "params": [
+                  {
+                    "name": "page",
+                    "description": "",
+                    "type": "Int",
+                    "optional": true
+                  },
+                  {
+                    "name": "pageSize",
+                    "description": "",
+                    "type": "Int",
+                    "optional": true
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "CommentCollection",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "CommentPage",
+            "description": "Type schema for CommentPage, containing fields and references to other CommentPages.",
+            "actions": [],
+            "fields": [
+              {
+                "name": "items",
+                "description": "List of Comment items.",
+                "type": "List",
+                "ofType": "Comment",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "next",
+                "description": "Reference to the next CommentPage.",
+                "type": "Ref",
+                "ofType": "CommentPage",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "CommentPage",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "Comment",
+            "description": "Collection of comments on Github",
+            "actions": [],
+            "fields": [
+              {
+                "name": "body",
+                "description": "The content of the comment",
+                "type": "String",
+                "params": [],
+                "hints": {
+                  "primary": true
+                }
+              },
+              {
+                "name": "created_at",
+                "description": "The creation date of the comment",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "updated_at",
+                "description": "The date when the comment was last updated",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "Comment",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "ContentCollection",
+            "description": "Collection of content items from Github",
+            "actions": [],
+            "fields": [
+              {
+                "name": "file",
+                "description": "Field representing a single file from Github",
+                "type": "Content",
+                "params": [
+                  {
+                    "name": "path",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "dir",
+                "description": "Field representing a directory of files from Github",
+                "type": "List",
+                "ofType": "Content",
+                "params": [
+                  {
+                    "name": "path",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "ContentCollection",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "Content",
+            "description": "A file, directory, symlink or submodule",
+            "actions": [
+              {
+                "name": "setContent",
+                "description": "Set the content of the file with an optional message",
+                "type": "Void",
+                "params": [
+                  {
+                    "name": "content",
+                    "description": "The content to be set for the file",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "message",
+                    "description": "An optional message to accompany the content setting",
+                    "type": "String",
+                    "optional": true
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "setText",
+                "description": "Set the text content of the file with an optional message",
+                "type": "Void",
+                "params": [
+                  {
+                    "name": "text",
+                    "description": "The text content to be set for the file",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "message",
+                    "description": "An optional message to accompany the text setting",
+                    "type": "String",
+                    "optional": true
+                  }
+                ],
+                "hints": {}
+              }
+            ],
+            "fields": [
+              {
+                "name": "type",
+                "description": "The type of the file, directory, symlink, or submodule",
+                "type": "String",
+                "params": [],
+                "hints": {
+                  "primary": true
+                }
+              },
+              {
+                "name": "name",
+                "description": "The name of the file, directory, symlink, or submodule",
+                "type": "String",
+                "params": [],
+                "hints": {
+                  "primary": true
+                }
+              },
+              {
+                "name": "encoding",
+                "description": "The encoding type of the file content",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "content",
+                "description": "The content of the file",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "contentText",
+                "description": "The text content of the file",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "path",
+                "description": "The path of the file, directory, symlink, or submodule",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "sha",
+                "description": "The SHA hash of the file",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "size",
+                "description": "The size of the file in bytes",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "submodule_git_url",
+                "description": "The git URL of the submodule",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "html_url",
+                "description": "The HTML URL of the file",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "download_url",
+                "description": "The download URL of the file",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "Content",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "IssueCollection",
+            "description": "Collection of Github issues",
+            "actions": [],
+            "fields": [
+              {
+                "name": "one",
+                "description": "Get a single issue by its number",
+                "type": "Issue",
+                "params": [
+                  {
+                    "name": "number",
+                    "description": "",
+                    "type": "Int",
+                    "optional": false
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "search",
+                "description": "Search for issues based on specified criteria",
+                "type": "IssueSearchPage",
+                "params": [
+                  {
+                    "name": "page",
+                    "description": "",
+                    "type": "Int",
+                    "optional": true
+                  },
+                  {
+                    "name": "pageSize",
+                    "description": "",
+                    "type": "Int",
+                    "optional": true
+                  },
+                  {
+                    "name": "q",
+                    "description": "Github API returns pull requests in the issues endpoint. Use this to include/exclude them. Can be either issue or pr",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "sort",
+                    "description": "What to sort results by. Can be created, updated, comments.",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "order",
+                    "description": "One of asc (ascending) or desc (descending).",
+                    "type": "String",
+                    "optional": true
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "page",
+                "description": "Retrieve a page of issues based on specified criteria",
+                "type": "IssuePage",
+                "params": [
+                  {
+                    "name": "page",
+                    "description": "",
+                    "type": "Int",
+                    "optional": true
+                  },
+                  {
+                    "name": "pageSize",
+                    "description": "",
+                    "type": "Int",
+                    "optional": true
+                  },
+                  {
+                    "name": "kind",
+                    "description": "Github API returns pull requests in the issues endpoint. Use this to include/exclude them. Can be either issue or pr",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "milestone",
+                    "description": "If an integer is passed, it should refer to a milestone by its number field. If the string * is passed, issues with any milestone are accepted. If the string none is passed, issues without milestones are returned.",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "state",
+                    "description": "Indicates the state of the issues to return. Can be open, closed, or all.",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "assignee",
+                    "description": "Can be the name of a user. Pass in none for issues with no assigned user, and * for issues assigned to any user.",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "creator",
+                    "description": "The user that created the issue.",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "mentioned",
+                    "description": "A user that's mentioned in the issue.",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "labels",
+                    "description": "A list of comma separated label names. Example: bug,ui,@high",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "sort",
+                    "description": "What to sort results by. Can be created, updated, comments.",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "direction",
+                    "description": "One of asc (ascending) or desc (descending).",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "since",
+                    "description": "Only show notifications updated after the given time. This is a timestamp in ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ",
+                    "type": "String",
+                    "optional": true
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "IssueCollection",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "IssueSearchPage",
+            "description": "Type representing the search results page for GitHub issues.",
+            "actions": [],
+            "fields": [
+              {
+                "name": "total_count",
+                "description": "",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "incomplete_results",
+                "description": "",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "next",
+                "description": "",
+                "type": "Ref",
+                "ofType": "IssueSearchPage",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "items",
+                "description": "",
+                "type": "List",
+                "ofType": "Issue",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "IssueSearchPage",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "IssuePage",
+            "description": "Collection of issues and a reference to the next page of issues.",
+            "actions": [],
+            "fields": [
+              {
+                "name": "items",
+                "description": "List of issues in the current page.",
+                "type": "List",
+                "ofType": "Issue",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "next",
+                "description": "Reference to the next page of issues.",
+                "type": "Ref",
+                "ofType": "IssuePage",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "IssuePage",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "Issue",
+            "description": "Collection of Github issues",
+            "actions": [
+              {
+                "name": "close",
+                "description": "Close the issue",
+                "type": "Void",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "createComment",
+                "description": "Create a new comment on the issue",
+                "type": "Void",
+                "params": [
+                  {
+                    "name": "body",
+                    "description": "",
+                    "type": "String",
+                    "optional": false
+                  }
+                ],
+                "hints": {}
+              }
+            ],
+            "fields": [
+              {
+                "name": "active_lock_reason",
+                "description": "The reason for the active lock on the issue",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "assignee",
+                "description": "The user assigned to the issue",
+                "type": "User",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "assignees",
+                "description": "The list of users assigned to the issue",
+                "type": "List",
+                "ofType": "User",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "author_association",
+                "description": "The association of the author with the issue",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "body",
+                "description": "The body of the issue",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "closed_at",
+                "description": "The date and time when the issue was closed",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "closed_by",
+                "description": "The user who closed the issue",
+                "type": "User",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "comments",
+                "description": "Collection of comments on the issue",
+                "type": "CommentCollection",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "created_at",
+                "description": "The date and time when the issue was created",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "draft",
+                "description": "Indicates if the issue is a draft",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "id",
+                "description": "The unique identifier of the issue",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "labels",
+                "description": "The list of labels associated with the issue",
+                "type": "List",
+                "ofType": "Label",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "locked",
+                "description": "Indicates if the issue is locked",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "milestone",
+                "description": "The milestone associated with the issue",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "node_id",
+                "description": "The node ID of the issue",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "number",
+                "description": "The issue number",
+                "type": "Int",
+                "params": [],
+                "hints": {
+                  "primary": true
+                }
+              },
+              {
+                "name": "pull_request",
+                "description": "The pull request associated with the issue",
+                "type": "PullRequest",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "reactions",
+                "description": "Reactions associated with the issue",
+                "type": "Reactions",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "state",
+                "description": "The state of the issue",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "title",
+                "description": "The title of the issue",
+                "type": "String",
+                "params": [],
+                "hints": {
+                  "secondary": true
+                }
+              },
+              {
+                "name": "updated_at",
+                "description": "The date and time when the issue was last updated",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "url",
+                "description": "The URL of the issue",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "user",
+                "description": "The user who created the issue",
+                "type": "User",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "html_url",
+                "description": "The HTML URL of the issue",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "Issue",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": [
+              {
+                "name": "commentCreated",
+                "description": "Triggered when a new comment is created on the issue",
+                "type": "CommentEvent",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "closed",
+                "description": "Triggered when the issue is closed",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              }
+            ]
+          },
+          {
+            "name": "Label",
+            "description": "Type Schema for a label in the Github repository",
+            "actions": [],
+            "fields": [
+              {
+                "name": "name",
+                "description": "Field representing the name of the label",
+                "type": "String",
+                "params": [],
+                "hints": {
+                  "primary": true
+                }
+              },
+              {
+                "name": "node_id",
+                "description": "Field representing the node ID of the label",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "id",
+                "description": "Field representing the ID of the label",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "color",
+                "description": "Field representing the color of the label",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "description",
+                "description": "Field representing the description of the label",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "default",
+                "description": "Field representing the default status of the label",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "Label",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "Reactions",
+            "description": "Type representing the reactions to a GitHub item.",
+            "actions": [],
+            "fields": [
+              {
+                "name": "total_count",
+                "description": "",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "plus_1",
+                "description": "",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "minus_1",
+                "description": "",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "laugh",
+                "description": "",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "hooray",
+                "description": "",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "confused",
+                "description": "",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "heart",
+                "description": "",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "rocket",
+                "description": "",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "eyes",
+                "description": "",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "Reactions",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "PullRequest",
+            "description": "Type representing a GitHub pull request",
+            "actions": [
+              {
+                "name": "close",
+                "description": "Close the pull request",
+                "type": "Void",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "createComment",
+                "description": "Create a new comment for the pull request",
+                "type": "Void",
+                "params": [
+                  {
+                    "name": "body",
+                    "description": "",
+                    "type": "String",
+                    "optional": false
+                  }
+                ],
+                "hints": {}
+              }
+            ],
+            "fields": [
+              {
+                "name": "number",
+                "description": "The unique identifier of the pull request",
+                "type": "Int",
+                "params": [],
+                "hints": {
+                  "primary": true
+                }
+              },
+              {
+                "name": "title",
+                "description": "The title of the pull request",
+                "type": "String",
+                "params": [],
+                "hints": {
+                  "primary": true
+                }
+              },
+              {
+                "name": "id",
+                "description": "The identifier of the pull request",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "state",
+                "description": "The state of the pull request",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "body",
+                "description": "The body content of the pull request",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "locked",
+                "description": "Indicates if the pull request is locked",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "merged",
+                "description": "Indicates if the pull request is merged",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "active_lock_reason",
+                "description": "The reason for the active lock on the pull request",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "diff",
+                "description": "The diff content of the pull request",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "node_id",
+                "description": "The node ID of the pull request",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "owner",
+                "description": "The owner of the pull request",
+                "type": "Ref",
+                "ofType": "User",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "comments",
+                "description": "Collection of comments associated with the pull request",
+                "type": "CommentCollection",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "PullRequest",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": [
+              {
+                "name": "closed",
+                "description": "Triggered when the pull request is closed",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              }
+            ]
+          },
+          {
+            "name": "PullRequestCollection",
+            "description": "Collection of Github pull requests",
+            "actions": [],
+            "fields": [
+              {
+                "name": "one",
+                "description": "Retrieve a single pull request",
+                "type": "PullRequest",
+                "params": [
+                  {
+                    "name": "number",
+                    "description": "",
+                    "type": "Int",
+                    "optional": false
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "page",
+                "description": "Retrieve a page of pull requests",
+                "type": "PullRequestPage",
+                "params": [
+                  {
+                    "name": "state",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "head",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "base",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "sort",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "direction",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "page",
+                    "description": "",
+                    "type": "Int",
+                    "optional": true
+                  },
+                  {
+                    "name": "pageSize",
+                    "description": "",
+                    "type": "Int",
+                    "optional": true
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "PullRequestCollection",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "PullRequestPage",
+            "description": "Type representing a page of pull requests.",
+            "actions": [],
+            "fields": [
+              {
+                "name": "items",
+                "description": "",
+                "type": "List",
+                "ofType": "PullRequest",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "next",
+                "description": "",
+                "type": "Ref",
+                "ofType": "PullRequestPage",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "PullRequestPage",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "ReleaseCollection",
+            "description": "Collection of Github releases",
+            "actions": [],
+            "fields": [
+              {
+                "name": "one",
+                "description": "Retrieves a single release by ID",
+                "type": "Release",
+                "params": [
+                  {
+                    "name": "id",
+                    "description": "The ID of the release to retrieve",
+                    "type": "String",
+                    "optional": false
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "page",
+                "description": "Retrieves a page of releases",
+                "type": "ReleasePage",
+                "params": [
+                  {
+                    "name": "pageSize",
+                    "description": "The number of releases per page",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "page",
+                    "description": "The page number to retrieve",
+                    "type": "String",
+                    "optional": true
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "ReleaseCollection",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "ReleasePage",
+            "description": "Collection of Release items with pagination support",
+            "actions": [],
+            "fields": [
+              {
+                "name": "items",
+                "description": "",
+                "type": "List",
+                "ofType": "Release",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "next",
+                "description": "",
+                "type": "Ref",
+                "ofType": "ReleasePage",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "ReleasePage",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "Release",
+            "description": "Collection of release information from Github",
+            "actions": [],
+            "fields": [
+              {
+                "name": "id",
+                "description": "Unique identifier of the release",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "name",
+                "description": "Name of the release",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "body",
+                "description": "Description of the release",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "draft",
+                "description": "Indicates if the release is a draft",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "prerelease",
+                "description": "Indicates if the release is a pre-release",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "url",
+                "description": "URL of the release",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "node_id",
+                "description": "Node ID of the release",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "tag_name",
+                "description": "Tag name of the release",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "target_commitish",
+                "description": "Target commitish of the release",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "created_at",
+                "description": "Creation date of the release",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "Release",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "License",
+            "description": "Collection of License items",
+            "actions": [],
+            "fields": [
+              {
+                "name": "name",
+                "description": "The name of the license",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "path",
+                "description": "The path of the license",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "sha",
+                "description": "The SHA of the license",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "size",
+                "description": "The size of the license",
+                "type": "Int",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "url",
+                "description": "The URL of the license",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "type",
+                "description": "The type of the license",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "content",
+                "description": "The content of the license",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "encoding",
+                "description": "The encoding of the license",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "license",
+                "description": "The description of the license",
+                "type": "LicenseDesc",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "html_url",
+                "description": "The HTML URL of the license",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "git_url",
+                "description": "The Git URL of the license",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "download_url",
+                "description": "The download URL of the license",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "License",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "LicenseDesc",
+            "description": "Collection of License Description items",
+            "actions": [],
+            "fields": [
+              {
+                "name": "key",
+                "description": "The key of the license description",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "name",
+                "description": "The name of the license description",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "url",
+                "description": "The URL of the license description",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "spdx_id",
+                "description": "The SPDX ID of the license description",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "LicenseDesc",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "GlobalSearch",
+            "description": "Type for performing global search on the Github repository.",
+            "actions": [],
+            "fields": [
+              {
+                "name": "commits",
+                "description": "Field for retrieving commit pages from the Github repository.",
+                "type": "CommitPage",
+                "params": [
+                  {
+                    "name": "type",
+                    "description": "Optional parameter for specifying the type of commits to retrieve.",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "sort",
+                    "description": "Optional parameter for specifying the sorting order of commits.",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "direction",
+                    "description": "Optional parameter for specifying the direction of commits.",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "page",
+                    "description": "Optional parameter for specifying the page number of commits to retrieve.",
+                    "type": "Int",
+                    "optional": true
+                  },
+                  {
+                    "name": "pageSize",
+                    "description": "Optional parameter for specifying the page size of commits to retrieve.",
+                    "type": "Int",
+                    "optional": true
+                  },
+                  {
+                    "name": "q",
+                    "description": "Optional parameter for specifying the search query for commits.",
+                    "type": "String",
+                    "optional": true
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "issues",
+                "description": "Field for retrieving issue pages from the Github repository.",
+                "type": "IssuePage",
+                "params": [
+                  {
+                    "name": "type",
+                    "description": "Optional parameter for specifying the type of issues to retrieve.",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "sort",
+                    "description": "Optional parameter for specifying the sorting order of issues.",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "direction",
+                    "description": "Optional parameter for specifying the direction of issues.",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "page",
+                    "description": "Optional parameter for specifying the page number of issues to retrieve.",
+                    "type": "Int",
+                    "optional": true
+                  },
+                  {
+                    "name": "pageSize",
+                    "description": "Optional parameter for specifying the page size of issues to retrieve.",
+                    "type": "Int",
+                    "optional": true
+                  },
+                  {
+                    "name": "q",
+                    "description": "Optional parameter for specifying the search query for issues.",
+                    "type": "String",
+                    "optional": true
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "GlobalSearch",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "IssueEvent",
+            "description": "Type representing an event related to an issue in the Github repository.",
+            "actions": [],
+            "fields": [
+              {
+                "name": "issue",
+                "description": "Reference to the issue related to the event.",
+                "type": "Ref",
+                "ofType": "Issue",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "IssueEvent",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "PullRequestEvent",
+            "description": "Type representing a pull request event.",
+            "actions": [],
+            "fields": [
+              {
+                "name": "pullRequest",
+                "description": "",
+                "type": "Ref",
+                "ofType": "PullRequest",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "PullRequestEvent",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "ReleaseEvent",
+            "description": "Type representing a release event in the Github membrane driver.",
+            "actions": [],
+            "fields": [
+              {
+                "name": "release",
+                "description": "",
+                "type": "Ref",
+                "ofType": "Release",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "ReleaseEvent",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "PushEvent",
+            "description": "Type representing a push event in the Github repository.",
+            "actions": [],
+            "fields": [
+              {
+                "name": "commit",
+                "description": "",
+                "type": "Ref",
+                "ofType": "Commit",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "PushEvent",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "CommentEvent",
+            "description": "Collection of comment events",
+            "actions": [],
+            "fields": [
+              {
+                "name": "comment",
+                "description": "Reference to the comment associated with the event",
+                "type": "Ref",
+                "ofType": "Comment",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "CommentEvent",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          },
+          {
+            "name": "Tests",
+            "description": "Collection of tests for the Github driver",
+            "actions": [
+              {
+                "name": "testUser",
+                "description": "Test the functionality for the user action",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "testRepo",
+                "description": "Test the functionality for the repo action",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "testIssue",
+                "description": "Test the functionality for the issue action",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "testCommit",
+                "description": "Test the functionality for the commit action",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "testIssueComment",
+                "description": "Test the functionality for the issue comment action",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "testPullRequest",
+                "description": "Test the functionality for the pull request action",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "testSearch",
+                "description": "Test the functionality for the search action",
+                "type": "Boolean",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "fields": [
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "Tests",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          }
+        ],
+        "imports": [
+          {
+            "name": "sys-process",
+            "schema": {
+              "types": [
+                {
+                  "name": "Root",
+                  "description": "",
+                  "actions": [],
+                  "fields": [
+                    {
+                      "name": "endpointUrl",
+                      "description": "Gets the program's own endpoint URL",
+                      "type": "String",
+                      "params": [],
+                      "hints": {}
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "imports": []
+            },
+            "source": {
+              "Program": "tbd"
+            }
+          },
+          {
+            "name": "http",
+            "schema": {
+              "types": [
+                {
+                  "name": "Root",
+                  "description": "Make HTTP requests",
+                  "actions": [
+                    {
+                      "name": "post",
+                      "description": "Performs a POST request",
+                      "type": "Resource",
+                      "params": [
+                        {
+                          "name": "url",
+                          "description": "The URL to send the POST request to",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "headers",
+                          "description": "Optional headers for the POST request",
+                          "type": "String",
+                          "optional": true
+                        },
+                        {
+                          "name": "body",
+                          "description": "The body of the POST request",
+                          "type": "String",
+                          "optional": true
+                        }
+                      ],
+                      "hints": {}
+                    },
+                    {
+                      "name": "put",
+                      "description": "Performs a PUT request",
+                      "type": "Resource",
+                      "params": [
+                        {
+                          "name": "url",
+                          "description": "The URL to send the PUT request to",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "headers",
+                          "description": "Optional headers for the PUT request",
+                          "type": "String",
+                          "optional": true
+                        },
+                        {
+                          "name": "body",
+                          "description": "The body of the PUT request",
+                          "type": "String",
+                          "optional": true
+                        }
+                      ],
+                      "hints": {}
+                    },
+                    {
+                      "name": "patch",
+                      "description": "Performs a PATCH request",
+                      "type": "Resource",
+                      "params": [
+                        {
+                          "name": "url",
+                          "description": "The URL to send the PATCH request to",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "headers",
+                          "description": "Optional headers for the PATCH request",
+                          "type": "String",
+                          "optional": true
+                        },
+                        {
+                          "name": "body",
+                          "description": "The body of the PATCH request",
+                          "type": "String",
+                          "optional": true
+                        }
+                      ],
+                      "hints": {}
+                    },
+                    {
+                      "name": "delete",
+                      "description": "Performs a DELETE request",
+                      "type": "Resource",
+                      "params": [
+                        {
+                          "name": "url",
+                          "description": "The URL to send the DELETE request to",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "headers",
+                          "description": "Optional headers for the DELETE request",
+                          "type": "String",
+                          "optional": true
+                        },
+                        {
+                          "name": "body",
+                          "description": "The body of the DELETE request",
+                          "type": "String",
+                          "optional": true
+                        }
+                      ],
+                      "hints": {}
+                    },
+                    {
+                      "name": "endpoint",
+                      "description": "Invoked when an HTTP request is received for this program",
+                      "type": "String",
+                      "params": [
+                        {
+                          "name": "method",
+                          "description": "HTTP method",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "path",
+                          "description": "HTTP path",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "body",
+                          "description": "HTTP body, if any",
+                          "type": "String",
+                          "optional": true
+                        },
+                        {
+                          "name": "query",
+                          "description": "HTTP query string, encoded as JSON",
+                          "type": "String",
+                          "optional": true
+                        },
+                        {
+                          "name": "headers",
+                          "description": "HTTP headers, encoded as JSON",
+                          "type": "String",
+                          "optional": false
+                        }
+                      ],
+                      "hints": {
+                        "hidden": true
+                      }
+                    },
+                    {
+                      "name": "email",
+                      "description": "Invoked when a new email arrives for this program",
+                      "type": "String",
+                      "params": [
+                        {
+                          "name": "replyTo",
+                          "description": "Reply to",
+                          "type": "String",
+                          "optional": true
+                        },
+                        {
+                          "name": "text",
+                          "description": "Email body as text",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "from",
+                          "description": "Email sender",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "to",
+                          "description": "To",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "cc",
+                          "description": "CC",
+                          "type": "String",
+                          "optional": true
+                        },
+                        {
+                          "name": "subject",
+                          "description": "Email subject",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "html",
+                          "description": "Email body as HTML",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "id",
+                          "description": "Email ID",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "inReplyTo",
+                          "description": "ID of email this is a reply to, if any",
+                          "type": "String",
+                          "optional": true
+                        },
+                        {
+                          "name": "replyText",
+                          "description": "Reply text",
+                          "type": "String",
+                          "optional": true
+                        },
+                        {
+                          "name": "attachments",
+                          "description": "An array of attachment names and download URLs",
+                          "type": "Json",
+                          "optional": true
+                        }
+                      ],
+                      "hints": {
+                        "hidden": true
+                      }
+                    }
+                  ],
+                  "fields": [
+                    {
+                      "name": "get",
+                      "description": "A resource obtained via a GET request",
+                      "type": "Resource",
+                      "params": [
+                        {
+                          "name": "url",
+                          "description": "The URL of the resource to retrieve",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "headers",
+                          "description": "Optional headers for the GET request",
+                          "type": "String",
+                          "optional": true
+                        }
+                      ],
+                      "hints": {}
+                    },
+                    {
+                      "name": "authenticated",
+                      "description": "An HTTP client that can make authenticated requests using Membrane's Transparent Authentication. Used by drivers to use avoid requiring an API key/secret pair.",
+                      "type": "Authenticated",
+                      "params": [
+                        {
+                          "name": "api",
+                          "description": "The API to use. Check https://www.membrane.io/docs for a list of APIs that support this",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "authId",
+                          "description": "An arbitrary gref that uniquely identifies this program.",
+                          "type": "Ref",
+                          "ofType": "String",
+                          "optional": false
+                        }
+                      ],
+                      "hints": {}
+                    },
+                    {
+                      "name": "gref",
+                      "description": "A reference to this node",
+                      "type": "Ref",
+                      "ofType": "Root",
+                      "params": [],
+                      "hints": {}
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "name": "Resource",
+                  "description": "An HTTP response",
+                  "actions": [],
+                  "fields": [
+                    {
+                      "name": "status",
+                      "description": "HTTP status code",
+                      "type": "Int",
+                      "params": [],
+                      "hints": {}
+                    },
+                    {
+                      "name": "headers",
+                      "description": "HTTP headers returned by server",
+                      "type": "String",
+                      "params": [],
+                      "hints": {}
+                    },
+                    {
+                      "name": "body",
+                      "description": "Body of the request as a string",
+                      "type": "String",
+                      "params": [],
+                      "hints": {}
+                    },
+                    {
+                      "name": "gref",
+                      "description": "A reference to this node",
+                      "type": "Ref",
+                      "ofType": "Resource",
+                      "params": [],
+                      "hints": {}
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "name": "Authenticated",
+                  "description": "",
+                  "actions": [
+                    {
+                      "name": "createLink",
+                      "description": "Creates a link to authenticate the user with an API and enable Membrane's Transparent Auth. Valid values for `api`: `google-docs`",
+                      "type": "String",
+                      "params": [],
+                      "hints": {}
+                    },
+                    {
+                      "name": "post",
+                      "description": "Performs a POST request",
+                      "type": "Resource",
+                      "params": [
+                        {
+                          "name": "url",
+                          "description": "",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "headers",
+                          "description": "",
+                          "type": "String",
+                          "optional": true
+                        },
+                        {
+                          "name": "body",
+                          "description": "",
+                          "type": "String",
+                          "optional": true
+                        }
+                      ],
+                      "hints": {}
+                    },
+                    {
+                      "name": "put",
+                      "description": "Performs a PUT request",
+                      "type": "Resource",
+                      "params": [
+                        {
+                          "name": "url",
+                          "description": "",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "headers",
+                          "description": "",
+                          "type": "String",
+                          "optional": true
+                        },
+                        {
+                          "name": "body",
+                          "description": "",
+                          "type": "String",
+                          "optional": true
+                        }
+                      ],
+                      "hints": {}
+                    },
+                    {
+                      "name": "patch",
+                      "description": "Performs a PATCH request",
+                      "type": "Resource",
+                      "params": [
+                        {
+                          "name": "url",
+                          "description": "",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "headers",
+                          "description": "",
+                          "type": "String",
+                          "optional": true
+                        },
+                        {
+                          "name": "body",
+                          "description": "",
+                          "type": "String",
+                          "optional": true
+                        }
+                      ],
+                      "hints": {}
+                    },
+                    {
+                      "name": "delete",
+                      "description": "Performs a DELETE request",
+                      "type": "Resource",
+                      "params": [
+                        {
+                          "name": "url",
+                          "description": "",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "headers",
+                          "description": "",
+                          "type": "String",
+                          "optional": true
+                        },
+                        {
+                          "name": "body",
+                          "description": "",
+                          "type": "String",
+                          "optional": true
+                        }
+                      ],
+                      "hints": {}
+                    }
+                  ],
+                  "fields": [
+                    {
+                      "name": "get",
+                      "description": "A resource obtained via a GET request",
+                      "type": "Resource",
+                      "params": [
+                        {
+                          "name": "url",
+                          "description": "",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "headers",
+                          "description": "",
+                          "type": "String",
+                          "optional": false
+                        }
+                      ],
+                      "hints": {}
+                    },
+                    {
+                      "name": "hasAuthenticated",
+                      "description": "Whether the user has authenticated with this API",
+                      "type": "Boolean",
+                      "params": [],
+                      "hints": {}
+                    },
+                    {
+                      "name": "gref",
+                      "description": "A reference to this node",
+                      "type": "Ref",
+                      "ofType": "Authenticated",
+                      "params": [],
+                      "hints": {}
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "imports": [
+                {
+                  "name": "sys-http",
+                  "schema": {
+                    "types": [
+                      {
+                        "name": "Root",
+                        "description": "",
+                        "actions": [
+                          {
+                            "name": "post",
+                            "description": "",
+                            "type": "Resource",
+                            "params": [
+                              {
+                                "name": "url",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              },
+                              {
+                                "name": "headers",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              },
+                              {
+                                "name": "body",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              }
+                            ],
+                            "hints": {}
+                          },
+                          {
+                            "name": "put",
+                            "description": "",
+                            "type": "Resource",
+                            "params": [
+                              {
+                                "name": "url",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              },
+                              {
+                                "name": "headers",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              },
+                              {
+                                "name": "body",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              }
+                            ],
+                            "hints": {}
+                          },
+                          {
+                            "name": "patch",
+                            "description": "",
+                            "type": "Resource",
+                            "params": [
+                              {
+                                "name": "url",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              },
+                              {
+                                "name": "headers",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              },
+                              {
+                                "name": "body",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              }
+                            ],
+                            "hints": {}
+                          },
+                          {
+                            "name": "delete",
+                            "description": "",
+                            "type": "Resource",
+                            "params": [
+                              {
+                                "name": "url",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              },
+                              {
+                                "name": "headers",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              },
+                              {
+                                "name": "body",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              }
+                            ],
+                            "hints": {}
+                          }
+                        ],
+                        "fields": [
+                          {
+                            "name": "get",
+                            "description": "",
+                            "type": "Resource",
+                            "params": [
+                              {
+                                "name": "url",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              },
+                              {
+                                "name": "headers",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              }
+                            ],
+                            "hints": {}
+                          },
+                          {
+                            "name": "authenticated",
+                            "description": "An HTTP client that can make authenticated requests using Membrane's Transparent Authentication. Used by drivers to use avoid requiring an API key/secret pair.",
+                            "type": "Authenticated",
+                            "params": [
+                              {
+                                "name": "api",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              },
+                              {
+                                "name": "authId",
+                                "description": "",
+                                "type": "Ref",
+                                "ofType": "String",
+                                "optional": false
+                              }
+                            ],
+                            "hints": {}
+                          }
+                        ],
+                        "events": []
+                      },
+                      {
+                        "name": "Resource",
+                        "description": "",
+                        "actions": [],
+                        "fields": [
+                          {
+                            "name": "status",
+                            "description": "",
+                            "type": "Int",
+                            "params": [],
+                            "hints": {}
+                          },
+                          {
+                            "name": "headers",
+                            "description": "",
+                            "type": "String",
+                            "params": [],
+                            "hints": {}
+                          },
+                          {
+                            "name": "body",
+                            "description": "",
+                            "type": "String",
+                            "params": [],
+                            "hints": {}
+                          }
+                        ],
+                        "events": []
+                      },
+                      {
+                        "name": "Authenticated",
+                        "description": "",
+                        "actions": [
+                          {
+                            "name": "createLink",
+                            "description": "Creates a link to authenticate the user with this API",
+                            "type": "String",
+                            "params": [],
+                            "hints": {}
+                          },
+                          {
+                            "name": "post",
+                            "description": "",
+                            "type": "Resource",
+                            "params": [
+                              {
+                                "name": "url",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              },
+                              {
+                                "name": "headers",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              },
+                              {
+                                "name": "body",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              }
+                            ],
+                            "hints": {}
+                          },
+                          {
+                            "name": "put",
+                            "description": "",
+                            "type": "Resource",
+                            "params": [
+                              {
+                                "name": "url",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              },
+                              {
+                                "name": "headers",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              },
+                              {
+                                "name": "body",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              }
+                            ],
+                            "hints": {}
+                          },
+                          {
+                            "name": "patch",
+                            "description": "",
+                            "type": "Resource",
+                            "params": [
+                              {
+                                "name": "url",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              },
+                              {
+                                "name": "headers",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              },
+                              {
+                                "name": "body",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              }
+                            ],
+                            "hints": {}
+                          },
+                          {
+                            "name": "delete",
+                            "description": "",
+                            "type": "Resource",
+                            "params": [
+                              {
+                                "name": "url",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              },
+                              {
+                                "name": "headers",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              },
+                              {
+                                "name": "body",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              }
+                            ],
+                            "hints": {}
+                          }
+                        ],
+                        "fields": [
+                          {
+                            "name": "get",
+                            "description": "",
+                            "type": "Resource",
+                            "params": [
+                              {
+                                "name": "url",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              },
+                              {
+                                "name": "headers",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              }
+                            ],
+                            "hints": {}
+                          },
+                          {
+                            "name": "hasAuthenticated",
+                            "description": "Whether the user has authenticated with this API",
+                            "type": "Boolean",
+                            "params": [],
+                            "hints": {}
+                          }
+                        ],
+                        "events": []
+                      }
+                    ],
+                    "imports": []
+                  },
+                  "source": {
+                    "Program": "tbd"
+                  }
+                },
+                {
+                  "name": "sys-clock",
+                  "schema": {
+                    "types": [
+                      {
+                        "name": "Root",
+                        "description": "",
+                        "actions": [
+                          {
+                            "name": "sleep",
+                            "description": "",
+                            "type": "Void",
+                            "params": [
+                              {
+                                "name": "key",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              },
+                              {
+                                "name": "seconds",
+                                "description": "",
+                                "type": "Float",
+                                "optional": false
+                              }
+                            ],
+                            "hints": {}
+                          }
+                        ],
+                        "fields": [],
+                        "events": [
+                          {
+                            "name": "timer",
+                            "description": "",
+                            "type": "TimerEvent",
+                            "params": [
+                              {
+                                "name": "key",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              },
+                              {
+                                "name": "spec",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              },
+                              {
+                                "name": "maxCount",
+                                "description": "",
+                                "type": "Int",
+                                "optional": false
+                              }
+                            ],
+                            "hints": {}
+                          },
+                          {
+                            "name": "timerAt",
+                            "description": "",
+                            "type": "TimerEvent",
+                            "params": [
+                              {
+                                "name": "key",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              },
+                              {
+                                "name": "seconds",
+                                "description": "",
+                                "type": "String",
+                                "optional": false
+                              }
+                            ],
+                            "hints": {}
+                          }
+                        ]
+                      },
+                      {
+                        "name": "TimerEvent",
+                        "description": "",
+                        "actions": [],
+                        "fields": [
+                          {
+                            "name": "id",
+                            "description": "",
+                            "type": "String",
+                            "params": [],
+                            "hints": {}
+                          }
+                        ],
+                        "events": []
+                      }
+                    ],
+                    "imports": []
+                  },
+                  "source": {
+                    "Program": ""
+                  }
+                },
+                {
+                  "name": "sys-process",
+                  "schema": {
+                    "types": [
+                      {
+                        "name": "Root",
+                        "description": "",
+                        "actions": [],
+                        "fields": [
+                          {
+                            "name": "endpointUrl",
+                            "description": "Gets the program's own endpoint URL",
+                            "type": "String",
+                            "params": [],
+                            "hints": {}
+                          }
+                        ],
+                        "events": []
+                      }
+                    ],
+                    "imports": []
+                  },
+                  "source": {
+                    "Program": ""
+                  }
+                }
+              ]
+            },
+            "source": {
+              "Program": "tbd"
+            }
+          },
+          {
+            "name": "sys-clock",
+            "schema": {
+              "types": [
+                {
+                  "name": "Root",
+                  "description": "",
+                  "actions": [
+                    {
+                      "name": "sleep",
+                      "description": "",
+                      "type": "Void",
+                      "params": [
+                        {
+                          "name": "key",
+                          "description": "",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "seconds",
+                          "description": "",
+                          "type": "Float",
+                          "optional": false
+                        }
+                      ],
+                      "hints": {}
+                    }
+                  ],
+                  "fields": [],
+                  "events": [
+                    {
+                      "name": "timer",
+                      "description": "",
+                      "type": "TimerEvent",
+                      "params": [
+                        {
+                          "name": "key",
+                          "description": "",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "spec",
+                          "description": "",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "maxCount",
+                          "description": "",
+                          "type": "Int",
+                          "optional": false
+                        }
+                      ],
+                      "hints": {}
+                    },
+                    {
+                      "name": "timerAt",
+                      "description": "",
+                      "type": "TimerEvent",
+                      "params": [
+                        {
+                          "name": "key",
+                          "description": "",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "seconds",
+                          "description": "",
+                          "type": "String",
+                          "optional": false
+                        }
+                      ],
+                      "hints": {}
+                    }
+                  ]
+                },
+                {
+                  "name": "TimerEvent",
+                  "description": "",
+                  "actions": [],
+                  "fields": [
+                    {
+                      "name": "id",
+                      "description": "",
+                      "type": "String",
+                      "params": [],
+                      "hints": {}
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "imports": []
+            },
+            "source": {
+              "Program": ""
+            }
+          },
+          {
+            "name": "sys-process",
+            "schema": {
+              "types": [
+                {
+                  "name": "Root",
+                  "description": "",
+                  "actions": [],
+                  "fields": [
+                    {
+                      "name": "endpointUrl",
+                      "description": "Gets the program's own endpoint URL",
+                      "type": "String",
+                      "params": [],
+                      "hints": {}
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "imports": []
+            },
+            "source": {
+              "Program": ""
+            }
+          }
+        ]
+      },
+      "source": {
+        "Program": "tbd"
+      }
+    },
+    {
+      "name": "sms",
+      "schema": {
+        "types": [
+          {
+            "name": "Root",
+            "description": "Send yourself text messages",
+            "actions": [
+              {
+                "name": "configure",
+                "description": "Configure your phone number to send and receive text messages.\nPrefix with '+' sign followed by country code.",
+                "type": "Void",
+                "params": [
+                  {
+                    "name": "number",
+                    "description": "",
+                    "type": "String",
+                    "optional": false
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "send",
+                "description": "Sends an SMS to the configured phone number",
+                "type": "Void",
+                "params": [
+                  {
+                    "name": "message",
+                    "description": "",
+                    "type": "String",
+                    "optional": false
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "handleSms",
+                "description": "Tells the user program that an sms was received. You don't normally have to use this.",
+                "type": "Void",
+                "params": [
+                  {
+                    "name": "message",
+                    "description": "",
+                    "type": "String",
+                    "optional": false
+                  }
+                ],
+                "hints": {
+                  "hidden": true
+                }
+              },
+              {
+                "name": "endpoint",
+                "description": "Invoked when an HTTP request is received for this program",
+                "type": "String",
+                "params": [
+                  {
+                    "name": "method",
+                    "description": "HTTP method",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "path",
+                    "description": "HTTP path",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "body",
+                    "description": "HTTP body, if any",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "query",
+                    "description": "HTTP query string, encoded as JSON",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "headers",
+                    "description": "HTTP headers, encoded as JSON",
+                    "type": "String",
+                    "optional": false
+                  }
+                ],
+                "hints": {
+                  "hidden": true
+                }
+              },
+              {
+                "name": "email",
+                "description": "Invoked when a new email arrives for this program",
+                "type": "String",
+                "params": [
+                  {
+                    "name": "replyTo",
+                    "description": "Reply to",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "text",
+                    "description": "Email body as text",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "from",
+                    "description": "Email sender",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "to",
+                    "description": "To",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "cc",
+                    "description": "CC",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "subject",
+                    "description": "Email subject",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "html",
+                    "description": "Email body as HTML",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "id",
+                    "description": "Email ID",
+                    "type": "String",
+                    "optional": false
+                  },
+                  {
+                    "name": "inReplyTo",
+                    "description": "ID of email this is a reply to, if any",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "replyText",
+                    "description": "Reply text",
+                    "type": "String",
+                    "optional": true
+                  },
+                  {
+                    "name": "attachments",
+                    "description": "An array of attachment names and download URLs",
+                    "type": "Json",
+                    "optional": true
+                  }
+                ],
+                "hints": {
+                  "hidden": true
+                }
+              }
+            ],
+            "fields": [
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "Root",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": [
+              {
+                "name": "received",
+                "description": "",
+                "type": "ReceivedEvent",
+                "params": [],
+                "hints": {}
+              }
+            ]
+          },
+          {
+            "name": "ReceivedEvent",
+            "description": "",
+            "actions": [],
+            "fields": [
+              {
+                "name": "message",
+                "description": "",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
+                "name": "gref",
+                "description": "A reference to this node",
+                "type": "Ref",
+                "ofType": "ReceivedEvent",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          }
+        ],
+        "imports": [
+          {
+            "name": "sys-sms",
+            "schema": {
+              "types": [
+                {
+                  "name": "Root",
+                  "description": "",
+                  "actions": [
+                    {
+                      "name": "configure",
+                      "description": "",
+                      "type": "Void",
+                      "params": [
+                        {
+                          "name": "number",
+                          "description": "",
+                          "type": "String",
+                          "optional": false
+                        }
+                      ],
+                      "hints": {}
+                    },
+                    {
+                      "name": "send",
+                      "description": "",
+                      "type": "Void",
+                      "params": [
+                        {
+                          "name": "message",
+                          "description": "",
+                          "type": "String",
+                          "optional": false
+                        }
+                      ],
+                      "hints": {}
+                    }
+                  ],
+                  "fields": [],
+                  "events": []
+                }
+              ],
+              "imports": []
+            },
+            "source": {
+              "Program": "tbd"
+            }
+          },
+          {
+            "name": "sys-clock",
+            "schema": {
+              "types": [
+                {
+                  "name": "Root",
+                  "description": "",
+                  "actions": [
+                    {
+                      "name": "sleep",
+                      "description": "",
+                      "type": "Void",
+                      "params": [
+                        {
+                          "name": "key",
+                          "description": "",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "seconds",
+                          "description": "",
+                          "type": "Float",
+                          "optional": false
+                        }
+                      ],
+                      "hints": {}
+                    }
+                  ],
+                  "fields": [],
+                  "events": [
+                    {
+                      "name": "timer",
+                      "description": "",
+                      "type": "TimerEvent",
+                      "params": [
+                        {
+                          "name": "key",
+                          "description": "",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "spec",
+                          "description": "",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "maxCount",
+                          "description": "",
+                          "type": "Int",
+                          "optional": false
+                        }
+                      ],
+                      "hints": {}
+                    },
+                    {
+                      "name": "timerAt",
+                      "description": "",
+                      "type": "TimerEvent",
+                      "params": [
+                        {
+                          "name": "key",
+                          "description": "",
+                          "type": "String",
+                          "optional": false
+                        },
+                        {
+                          "name": "seconds",
+                          "description": "",
+                          "type": "String",
+                          "optional": false
+                        }
+                      ],
+                      "hints": {}
+                    }
+                  ]
+                },
+                {
+                  "name": "TimerEvent",
+                  "description": "",
+                  "actions": [],
+                  "fields": [
+                    {
+                      "name": "id",
+                      "description": "",
+                      "type": "String",
+                      "params": [],
+                      "hints": {}
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "imports": []
+            },
+            "source": {
+              "Program": ""
+            }
+          },
+          {
+            "name": "sys-process",
+            "schema": {
+              "types": [
+                {
+                  "name": "Root",
+                  "description": "",
+                  "actions": [],
+                  "fields": [
+                    {
+                      "name": "endpointUrl",
+                      "description": "Gets the program's own endpoint URL",
+                      "type": "String",
+                      "params": [],
+                      "hints": {}
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "imports": []
+            },
+            "source": {
+              "Program": ""
+            }
+          }
+        ]
+      },
+      "source": {
+        "Program": "tbd"
+      }
+    }
+  ]
+}
