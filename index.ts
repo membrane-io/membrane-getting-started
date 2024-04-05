@@ -118,7 +118,7 @@ export async function ping() {
 
 // Every Membrane program comes with its own HTTP endpoint.
 // You can export an `endpoint` function to expose a REST API, serve HTML, handle webhooks, etc.
-// Uncomment the `endpoint` function below that returns a simple HTML page.
+// The `endpoint` function below returns a simple HTML page.
 export async function endpoint(req) {
   const headers = { "Content-Type": "text/html" };
   const body = `<h1>Welcome to Membrane, ${state.name}!</h1>`;
@@ -167,7 +167,6 @@ export async function endpoint(req) {
 
 // Create a personal access token on GitHub and configure it by clicking `github` -> `configure` in the Membrane Explorer.
 // Uncomment the function body below and invoke the `getGitHubProfile` action to fetch your GitHub profile location.
-
 export async function getGitHubProfile() {
   // const user = nodes.github.users.one({ name: "[add your username here]" });
   // const location = await user.location;
