@@ -67,7 +67,7 @@ export async function run() {
  */
 
 // Membrane comes with several built-in utils that your programs can install, like `sms` and `email`.
-// This program already has `sms` and `email` installed as dependencies. We'll cover how to add new dependencies later.
+// Your workspace has `sms` and `email` installed and this program includes them as dependencies. We'll cover how to add new dependencies later.
 
 // You can access a dependency by importing the `nodes` object (or add `nodes` to your import statement in STEP 1).
 import { nodes } from "membrane";
