@@ -49,7 +49,7 @@ console.log(`Update count: ${state.updates}`);
  */
 
 // A Membrane program can export _actions_ that you invoke. This program exports a `run` action.
-// Uncomment the `run` function below and invoke the action. To invoke an action, you can:
+// Let's invoke the `run` action, defined as a function below. To invoke an action, you can:
 // 1. Click on the "Invoke ▶️" button directly above the function signature
 // 2. In the Membrane Explorer, click "getting-started" then click "Invoke" to the right of "run"
 // 3. Use the Command+Enter keyboard shortcut
@@ -67,28 +67,19 @@ export async function run() {
  */
 
 // Membrane comes with several built-in utils that your programs can install, like `sms` and `email`.
-// To add a dependency to your program, drag 'n drop the util from the Membrane Explorer:
-// 1. Into the bottom right "CONFIG" panel
-// 2. Directly into your code
+// This program already has `sms` and `email` installed as dependencies. We'll cover how to add new dependencies later.
 
-// To start, try dragging `email` from the Membrane Explorer down to your bottom right panel.
-// Your program's dependencies will show up in the bottom right panel under "DEPENDENCIES".
-// To remove a dependency, you can right click it and select "Remove".
-
-// Once you've added a dependency, you can access it by importing the `nodes` object. (Uncomment the next line).
+// You can access a dependency by importing the `nodes` object (or add `nodes` to your import statement in STEP 1).
 import { nodes } from "membrane";
 
-// Now that we've added `email` to your program, let's set up an action to send you an email.
-// Uncomment the `ping` function below and invoke it.
-
+// Let's invoke the `ping` action below that sends you an email.
 export async function ping() {
   await nodes.email.send({
     subject: "Getting started with Membrane",
     body: `Hello, ${state.name}!`,
   });
 
-  // Membrane's `sms` util works similarly to `email`.
-  // Try adding `sms` as a dependency to your program and uncommenting the line below.
+  // Membrane's `sms` util works similarly to `email`. Try uncommenting the `sms` invocation below.
   // You'll first have to configure your phone number by clicking "sms" then "configure" in the Membrane Explorer.
   // await nodes.sms.send({ message: `Hello, ${state.name}!` });
 }
@@ -166,17 +157,21 @@ export async function endpoint(req) {
 // Drivers are Membrane programs that connect to APIs like GitHub, Google Docs, Slack, OpenAI, etc.
 
 // The Membrane team maintains a set of open-source drivers and examples, which anyone can contribute to.
-// To view all drivers and examples, click on "NEW" then "Program Registry" in the Membrane Explorer.
+// To view and install drivers and examples, click "NEW" then "Program Registry" in the Membrane Explorer.
 // Or, visit Membrane's drivers directory on GitHub: https://github.com/membrane-io/directory
 
-// As an example, install the `github` driver and drag it into your program's dependencies.
+// As an example, install the `github` driver and add it to your program's dependencies.
+// To add a dependency to a program, drag 'n drop the program from the Membrane Explorer:
+// 1. Into the bottom right "CONFIG" panel
+// 2. Directly into your code
+
 // Create a personal access token on GitHub and configure it by clicking `github` -> `configure` in the Membrane Explorer.
-// Uncomment the action below that fetches your GitHub profile location.
+// Uncomment the function body below and invoke the `getGitHubProfile` action to fetch your GitHub profile location.
 
 export async function getGitHubProfile() {
-  const user = nodes.github.users.one({ name: "[add your username here]" });
-  const location = await user.location;
-  console.log(location);
+  // const user = nodes.github.users.one({ name: "[add your username here]" });
+  // const location = await user.location;
+  // console.log(location);
 }
 
 // To learn more about drivers in Membrane, visit: https://www.membrane.io/open-integrations-model
