@@ -22,7 +22,6 @@
   },
   "dependencies": {
     "email": "email:",
-    "sms": "sms:",
-    "github": "github:"
+    "sms": "sms:"
   }
 }
