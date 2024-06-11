@@ -16,6 +16,12 @@
             "name": "getGitHubProfile",
             "type": "Void"
           }
+        ],
+        "fields": [
+          {
+            "name": "status",
+            "type": "String"
+          }
         ]
       }
     ]
