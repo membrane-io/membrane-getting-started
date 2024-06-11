@@ -44,7 +44,7 @@ console.log(`Update count: ${state.updates}`);
 
 /**
  * ========================================================================================================================
- * STEP 2 | Membrane actions
+ * STEP 2 | Membrane actions and fields
  * ========================================================================================================================
  */
 
@@ -56,6 +56,16 @@ console.log(`Update count: ${state.updates}`);
 
 export async function run() {
   console.log("Invoking `run` action...");
+}
+
+// Membrane programs can also export _fields_ that resolve to values.
+// Fields can also contain subfields instead of pointing to a value directly.
+// This program contains a `status` field that resolves to a string.
+// Try changing the string returned, hit save, and see your text in the Explorer next to `getting-started`.
+// `status` is a default field that all Membrane programs have, but you can add any fields to a schema.
+
+export function status() {
+  return "👋 start here!";
 }
 
 // To learn more about actions in Membrane, visit: https://www.membrane.io/the-graph
