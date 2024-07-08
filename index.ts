@@ -65,7 +65,7 @@ export function status() {
   return "👋 start here!";
 }
 
-// Note: `status` is a default field that all Membrane programs have, but you can add any fields to a schema.
+// Note: `status` is an implicit field that all Membrane programs have, but you can add any fields to a schema.
 // To learn more about actions and fields in Membrane, visit: https://docs.membrane.io/concepts/schema
 
 /**
@@ -75,10 +75,10 @@ export function status() {
  */
 
 // Membrane comes with several built-in utils that your programs can install, like `sms` and `email`.
-// Your workspace has `sms` and `email` installed, and this program includes them as dependencies.
-// We'll cover how to add new dependencies later.
+// Your workspace has `sms` and `email` installed, and this program includes them as connections.
+// We'll cover how to add new connections later.
 
-// You can access a dependency by importing the `nodes` object (or add `nodes` to your import statement in step 1).
+// You can access a connection by importing the `nodes` object (or add `nodes` to your import statement in step 1).
 import { nodes } from "membrane";
 
 // Let's invoke the `ping` action below that sends you an email.
@@ -93,6 +93,7 @@ export async function ping() {
   // await nodes.sms.send({ message: `Hello, ${state.name}!` });
 }
 
+// To learn more about connections in Membrane, visit: https://docs.membrane.io/features/connections
 // To learn more about `sms` and `email` in Membrane, visit: https://docs.membrane.io/features/email
 
 /**
@@ -166,8 +167,8 @@ export async function endpoint(req) {
 // To view and install drivers and examples, click "NEW" then "Program Registry" in the Membrane Explorer.
 // Or, visit Membrane's drivers directory on GitHub: https://github.com/membrane-io/directory
 
-// As an example, install the `github` driver and add it to your program's dependencies.
-// To add a dependency to a program, drag 'n drop the program from the Membrane Explorer:
+// As an example, install the `github` driver and add it to your program's connections.
+// To add a connection to a program, drag 'n drop the program from the Membrane Explorer:
 // 1. Into the DEPENDENCIES section of the CONFIG panel in the bottom right of your IDE
 // 2. Directly into your code
 
