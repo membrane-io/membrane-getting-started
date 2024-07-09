@@ -32,7 +32,7 @@ import { state } from "membrane";
 
 // We'll use `state` here to store your name and a count of the updates you've made to this program.
 state.name = "[add your name here]";
-state.updates ??= 0; // `??= 0` (nullish coalescing assignment) is equivalent to `= state.updates ?? 0`
+state.updates = state.updates ?? 0;
 state.updates++;
 
 // When you save this file, Membrane will instantly deploy and execute your program.
@@ -40,7 +40,7 @@ state.updates++;
 console.log(`Hello, ${state.name}!`);
 console.log(`Update count: ${state.updates}`);
 
-// To learn more about persistence in Membrane, visit: https://www.membrane.io/durable-programs
+// To learn more about persistence in Membrane, visit: https://docs.membrane.io/features/state
 
 /**
  * ========================================================================================================================
@@ -49,10 +49,8 @@ console.log(`Update count: ${state.updates}`);
  */
 
 // A Membrane program can export _actions_ that you invoke. This program exports a `run` action.
-// Let's invoke the `run` action, defined as a function below. To invoke an action, you can:
-// 1. Click on the "Invoke ▶️" button directly above the function signature
-// 2. In the Membrane Explorer, click "getting-started" then click "Invoke" to the right of "run"
-// 3. Use the Command+Enter keyboard shortcut
+// Let's invoke the `run` action, defined as a function below. To invoke the action:
+// Navigate to the Membrane Explorer, click "getting-started", then click "Invoke" to the right of "run"
 
 export async function run() {
   console.log("Invoking `run` action...");
@@ -62,13 +60,13 @@ export async function run() {
 // Fields can also contain subfields instead of pointing to a value directly.
 // This program contains a `status` field that resolves to a string.
 // Try changing the string returned, hit save, and see your text in the Explorer next to `getting-started`.
-// `status` is a default field that all Membrane programs have, but you can add any fields to a schema.
 
 export function status() {
   return "👋 start here!";
 }
 
-// To learn more about actions in Membrane, visit: https://www.membrane.io/the-graph
+// Note: `status` is an implicit field that all Membrane programs have, but you can add any fields to a schema.
+// To learn more about actions and fields in Membrane, visit: https://docs.membrane.io/concepts/schema
 
 /**
  * ========================================================================================================================
@@ -77,9 +75,10 @@ export function status() {
  */
 
 // Membrane comes with several built-in utils that your programs can install, like `sms` and `email`.
-// Your workspace has `sms` and `email` installed and this program includes them as dependencies. We'll cover how to add new dependencies later.
+// Your workspace has `sms` and `email` installed, and this program includes them as connections.
+// We'll cover how to add new connections later.
 
-// You can access a dependency by importing the `nodes` object (or add `nodes` to your import statement in STEP 1).
+// You can access a connection by importing the `nodes` object (or add `nodes` to your import statement in step 1).
 import { nodes } from "membrane";
 
 // Let's invoke the `ping` action below that sends you an email.
@@ -94,10 +93,8 @@ export async function ping() {
   // await nodes.sms.send({ message: `Hello, ${state.name}!` });
 }
 
-// Membrane `sms` can also handle your responses to texts!
-// Try replying to the text from Membrane, and keep an eye on Membrane Logs to see your response printed to the console.
-
-// To learn more about `sms` and `email` in Membrane, visit: https://www.membrane.io/example-sms-reminders
+// To learn more about connections in Membrane, visit: https://docs.membrane.io/features/connections
+// To learn more about `sms` and `email` in Membrane, visit: https://docs.membrane.io/features/email
 
 /**
  * ========================================================================================================================
@@ -114,11 +111,11 @@ export async function ping() {
 // Let's set up the `ping` action to run on a timer.
 // In the Membrane Explorer, click on "getting-started" then click the clock icon to the right of "ping".
 // Select the type of timer you want (e.g. "Invoke after delay...") and when you want it to run (e.g. "10s").
-// After clicking the green check to confirm, your timer will show up in the bottom right panel of the explorer.
+// After clicking the green check to confirm, your timer will appear in the CONFIG panel in the bottom right of your IDE.
 // For crons, you can see upcoming scheduled invocations by hovering over the timer.
 // You can delete any timer by right clicking it and selecting "Delete".
 
-// To learn more about timers in Membrane, visit: https://www.membrane.io/cron-jobs-and-timers
+// To learn more about timers in Membrane, visit: https://docs.membrane.io/features/timers
 
 /**
  * ========================================================================================================================
@@ -141,7 +138,7 @@ export async function endpoint(req) {
 // Try editing the HTML, hit save, and refresh the page.
 // You have a live website that you can edit and deploy instantly!
 
-// To learn more about HTTP endpoints in Membrane, visit: https://www.membrane.io/http-endpoints
+// To learn more about HTTP endpoints in Membrane, visit: https://docs.membrane.io/features/endpoints
 
 /**
  * ========================================================================================================================
@@ -150,12 +147,12 @@ export async function endpoint(req) {
  */
 
 // Steps 1-5 illustrate a core feature across all of Membrane: everything gets recorded in Membrane Logs.
-// Every program update, action, timer, endpoint request, etc. will be logged.
+// Every action, timer, program update (i.e. deploy on save), endpoint request, etc will be logged.
 
 // For example, in step 5 when you open your endpoint URL in the browser, you'll see the request printed in Membrane Logs.
 // Try clicking into that `endpoint` log to view more detail about the request.
 
-// To learn more about observability in Membrane, visit: https://www.membrane.io/observability
+// To learn more about observability in Membrane, visit: https://docs.membrane.io/features/observability
 
 /**
  * ========================================================================================================================
@@ -170,20 +167,19 @@ export async function endpoint(req) {
 // To view and install drivers and examples, click "NEW" then "Program Registry" in the Membrane Explorer.
 // Or, visit Membrane's drivers directory on GitHub: https://github.com/membrane-io/directory
 
-// As an example, install the `github` driver and add it to your program's dependencies.
-// To add a dependency to a program, drag 'n drop the program from the Membrane Explorer:
-// 1. Into the bottom right "CONFIG" panel
+// As an example, install the `github` driver and add it to your program's connections.
+// To add a connection to a program, drag 'n drop the program from the Membrane Explorer:
+// 1. Into the DEPENDENCIES section of the CONFIG panel in the bottom right of your IDE
 // 2. Directly into your code
 
 // Create a personal access token on GitHub and configure it by clicking `github` -> `configure` in the Membrane Explorer.
 // Uncomment the function body below and invoke the `getGitHubProfile` action to fetch your GitHub profile location.
 export async function getGitHubProfile() {
-  // const user = nodes.github.users.one({ name: "[add your username here]" });
-  // const location = await user.location;
-  // console.log(location);
+  // const user = await nodes.github.users.one({ name: "[add your username]" }).$query("{ name location }");
+  // console.log(`${user.name} | ${user.location}`);
 }
 
-// To learn more about drivers in Membrane, visit: https://www.membrane.io/open-integrations-model
+// To learn more about drivers in Membrane, visit: https://docs.membrane.io/concepts/drivers
 
 /**
  * ========================================================================================================================
@@ -200,4 +196,4 @@ export async function getGitHubProfile() {
 // When you update a program's schema in the explorer, the program's `memconfig.json` file will automatically update.
 // You should never have to manually edit `memconfig.json` nor `memconfig.lock`.
 
-// To learn more about the Membrane graph, visit: https://www.membrane.io/the-graph
+// To learn more about the Membrane graph, visit: https://docs.membrane.io/concepts/the-graph/
