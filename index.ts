@@ -224,7 +224,7 @@ export async function getGitHubProfile() {
  *
  * On that note, we'd love your feedback. You can reach us:
  * 1. via this form (powered by a Membrane HTTP endpoint): https://spare-346-sector-257-manner-983-bet.hook.membrane.io
- * 2. via email: juan@membrane.io, justin@membrane.io, pete@membrane.io
+ * 2. via email: contact@membrane.io
  * 3. on Discord: https://discord.gg/sbRcqC7QxE
  *
  * Thanks!
