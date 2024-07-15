@@ -18,7 +18,7 @@
  * 1. "Membrane: Focus on Membrane Explorer View"
  * 2. "Membrane Logs: Focus on Membrane Logs View" (then click the |• getting-started| tab to view logs for this program)
  *
- * We'd love to hear your feedback: shoot an email to pete@membrane.io with any questions/suggestions/etc.
+ * We'd love to hear your feedback: shoot an email to contact@membrane.io with any questions/suggestions/etc.
  * Ok, let's move onto step 1!
  * ========================================================================================================================
  */
