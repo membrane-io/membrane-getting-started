@@ -12,6 +12,7 @@
  *
  * This hands-on tour will guide you through Membrane's core concepts and features.
  * You might also want to open our docs https://docs.membrane.io in a separate tab to supplement the tutorial.
+ * We recorded a video of the tutorial, too, in case that's helpful: https://share.descript.com/view/Smb0rEUzMkk
  *
  * To start, make sure the Membrane Explorer (sidebar) and Membrane Logs (bottombar) are open in your IDE.
  * Open your command palette (cmd+shift+P on Mac) and type:
