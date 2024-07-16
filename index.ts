@@ -185,7 +185,7 @@ export async function endpoint(req) {
 
 // As an example, install the `github` driver and add it to your program's connections.
 // To add a connection to a program, drag 'n drop the program from the Membrane Explorer:
-// Into the DEPENDENCIES section of the CONFIG panel in the bottom right of your IDE
+// Into the CONNECTIONS section of the CONFIG panel in the bottom right of your IDE
 
 // Create a personal access token on GitHub and configure it by clicking `github` -> `configure` in the Membrane Explorer.
 // Uncomment the function body below and invoke the `getGitHubProfile` action to fetch your GitHub profile location.
