@@ -19,6 +19,6 @@ Open up `index.ts` to get started. We'll go over the other files in this directo
 
 ## Where to learn more
 
-You can dig deeper on [membrane.io/docs](https://membrane.io/docs) and ask any questions in the [Membrane Discord](https://discord.gg/xvAtrWPVmY).
+You can dig deeper on [docs.membrane.io](https://docs.membrane.io) and ask any questions in the [Membrane Discord](https://discord.gg/xvAtrWPVmY).
 
-If you have any feedback, leave a comment on the [tour feedback form](https://bath-617-hell-57-impact-919-net.hook.membrane.io/) (powered by Membrane). Thanks!
+If you have any feedback, leave a comment on the [tour feedback form](https://spare-346-sector-257-manner-983-bet.hook.membrane.io/) (powered by Membrane). Thanks!
