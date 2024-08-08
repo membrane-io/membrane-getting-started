@@ -19,7 +19,7 @@
         ],
         "fields": [
           {
-            "name": "status",
+            "name": "progress",
             "type": "String"
           }
         ]
