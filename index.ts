@@ -188,7 +188,7 @@ export async function endpoint(req) {
 // Create a personal access token on GitHub and configure it by clicking `github` -> `configure` in the Navigator.
 // Uncomment the function body below, add your GitHub username, and invoke the `getGitHubProfile` action.
 export async function getGitHubProfile() {
-  // const user = await nodes.github.users.one({ name: "[add your gh username]" }).$query("{ name location }");
+  // const user = await nodes.github.users.one({ name: "[add your gh username]" }).$query("{ login name location }");
   // console.log(`${user.login} | ${user.name} | ${user.location}`);
 }
 
