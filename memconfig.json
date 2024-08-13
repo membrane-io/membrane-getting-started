@@ -3,6 +3,7 @@
     "types": [
       {
         "name": "Root",
+        "description": "Learn Membrane by doing with this interactive tutorial program.",
         "actions": [
           {
             "name": "run",
