@@ -8,8 +8,8 @@ Open up `index.ts` to get started. We'll go over the other files in this directo
 
 ## What you'll learn
 
-1. [Membrane persistence](./index.ts#L25)
-1. [Membrane actions](./index.ts#L47)
+1. [Membrane state](./index.ts#L27)
+1. [Membrane actions and fields](./index.ts#L47)
 1. [Membrane `sms` and `email`](./index.ts#L65)
 1. [Membrane timers](./index.ts#L103)
 1. [Membrane HTTP endpoints](./index.ts#L124)
