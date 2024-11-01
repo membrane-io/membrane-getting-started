@@ -50,17 +50,13 @@ export async function run() {
   console.log("Invoking `run` action...");
 }
 
-// Membrane programs can also export _fields_ that resolve to values (like in GraphQL).
-// Fields either resolve to scalars (e.g. string, boolean) or contain subfields (like an object).
+// Membrane programs can also export _fields_ that resolve to scalars (e.g. string/bool) or contain subfields.
 // This program contains a `status` field that resolves to a string.
-// Try changing the string returned, hit save, and see your text in the Navigator (left sidebar) next to `getting-started`.
 export function status() {
-  return "👋 start here!";
+  return state.updates ? "started" : "start your engine";
 }
 
-// 💡 Note: `status` is a special field in Membrane, but you can add any fields to a schema.
-// 💡 There's also nothing special about the name `run` for an action.
-// We'll cover editing names and types for a program's actions and fields (aka its schema) in step 8 of this tutorial.
+// We'll cover adding/editing/removing a program's actions and fields (aka its schema) in step 8.
 // 🔗 To learn more about actions and fields in Membrane, visit: https://docs.membrane.io/concepts/schema
 
 /**
