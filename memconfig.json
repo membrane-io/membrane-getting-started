@@ -3,7 +3,13 @@
     "types": [
       {
         "name": "Root",
-        "description": "Learn Membrane by doing with this interactive tutorial program.",
+        "description": "A hands-on tour to walk you through Membrane's core concepts and features.",
+        "fields": [
+          {
+            "name": "status",
+            "type": "String"
+          }
+        ],
         "actions": [
           {
             "name": "run",
@@ -16,12 +22,6 @@
           {
             "name": "getGitHubProfile",
             "type": "Void"
-          }
-        ],
-        "fields": [
-          {
-            "name": "progress",
-            "type": "String"
           }
         ]
       }
