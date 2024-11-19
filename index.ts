@@ -67,7 +67,7 @@ export function status() {
 
 // Membrane comes with a few built-in programs that your programs can use, like `sms` and `email`.
 // This `getting-started` program already includes `sms` and `email` as _connections_.
-// You can see connections in the CONFIG panel (bottom left). We'll cover how to add new connections in step 7.
+// You can view CONNECTIONS in the right sidebar. We'll cover how to add new connections in step 7.
 
 // You can access a connection by importing the `nodes` object.
 import { nodes } from "membrane";
@@ -103,7 +103,7 @@ export async function ping() {
 // Let's set up the `ping` action to run on a timer.
 // In the Navigator (left sidebar), click on "getting-started" then click the clock icon to the right of "ping".
 // Select the type of timer you want (e.g. "Invoke after delay...") and when you want it to run (e.g. "10s").
-// After clicking the green checkmark or pressing Enter, your timer will appear in the CONFIG panel (bottom left).
+// After clicking the green checkmark or pressing Enter, your timer will appear under TIMERS in the right sidebar.
 // For crons, you can see upcoming scheduled invocations by hovering over the timer.
 // You can delete any timer by right-clicking it and selecting "Delete".
 
@@ -160,11 +160,11 @@ export async function endpoint({ method, path, body, headers, query }) {
 // Drivers are Membrane programs that connect to APIs like GitHub, Google Docs, Slack, OpenAI, etc.
 
 // The Membrane team maintains a set of open-source drivers and examples, which anyone can contribute to.
-// To view and install drivers and examples, click "NEW PROGRAM" then "Package Search" in the Navigator.
+// To view and install drivers and examples, click "🔎 SEARCH" in the Navigator (top left).
 // Search "membrane" to see the packages shared by our team.
 
 // As an example, install the `membrane/github` driver and add it to your program's connections.
-// To add a connection, drag 'n drop the program from the Navigator into the CONFIG panel (bottom left).
+// To add a connection, click `+` next to CONNECTIONS in the right sidebar, or drag 'n drop a program from the Navigator.
 // 🔗 For reference: https://docs.membrane.io/concepts/connections/#add-a-program-connection
 
 // Create a personal access token on GitHub and configure it by clicking `github` -> `configure` in the Navigator.
@@ -190,7 +190,7 @@ export async function getGitHubProfile() {
 // This program also connects to other nodes in the graph, like `email`, `sms`, and `github`.
 
 // A Membrane program's graph is represented by its Schema.
-// You can view and update your program's schema in the CONFIG pannel (bottom left).
+// You can view and update your program's schema in the right sidebar under SCHEMA.
 // When you update a program's schema in the explorer, the program's `memconfig.json` file will automatically update.
 // You should rarely have to manually edit `memconfig.json` and never `memconfig.lock`.
 
@@ -200,7 +200,7 @@ export async function getGitHubProfile() {
  * ========================================================================================================================
  * 🎉 Well done! 🎉
  *
- * Thanks for going through our tour!
+ * Thanks for going through our tutorial!
  * We know there's a lot to wrap your head around, and we want to make learning and using Membrane _way_ simpler.
  *
  * On that note, we'd love your feedback. You can reach us:
